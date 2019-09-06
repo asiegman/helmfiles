@@ -127,18 +127,20 @@ releases:
     namespace: "kube-system"
     vendor: "kubernetes"
     default: "true"
-  chart: "cloudposse-incubator/nginx-default-backend"
-  version: "0.3.0"
+  # chart: "cloudposse-incubator/nginx-default-backend"
+  chart: "/Users/jgro/CP_dev/charts/incubator/nginx-default-backend"
+  version: "0.4.0"
   wait: true
   installed: {{ env "NGINX_INGRESS_BACKEND_INSTALLED" | default "true" }}
   values:
     - nameOverride: default
       ### Optional: NGINX_INGRESS_BACKEND_REPLICA_COUNT; e.g. 2
+      ### Setting this to 1 can interfere with cluster auto-scaling
       replicaCount: '{{ env "NGINX_INGRESS_BACKEND_REPLICA_COUNT" | default "2" }}'
       resources:
         limits:
-          cpu: '{{ env "NGINX_INGRESS_DEFAULT_BACKEND_LIMIT_CPU" | default "200m" }}'
-          memory: '{{ env "NGINX_INGRESS_DEFAULT_BACKEND_LIMIT_MEMORY" | default "256Mi" }}'
+          cpu: '{{ env "NGINX_INGRESS_DEFAULT_BACKEND_LIMIT_CPU" | default "20m" }}'
+          memory: '{{ env "NGINX_INGRESS_DEFAULT_BACKEND_LIMIT_MEMORY" | default "16Mi" }}'
         requests:
           cpu: '{{ env "NGINX_INGRESS_DEFAULT_BACKEND_REQUEST_CPU" | default "1m" }}'
           memory: '{{ env "NGINX_INGRESS_DEFAULT_BACKEND_REQUEST_MEMORY" | default "8Mi" }}'
