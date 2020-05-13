@@ -9,7 +9,7 @@ repositories:
 # Repo of new Kubernetes charts in development
 - name: "kubernetes-incubator"
   url: "https://kubernetes-charts-incubator.storage.googleapis.com"
-- name: "forecastle"
+- name: "forecastle-oidc"
   # Cannot use release tags, see https://github.com/aslafy-z/helm-git/issues/9
   # url: "git+https://github.com/stakater/Forecastle@deployments/kubernetes/chart?ref=v1.0.25"
   # v1.0.25 url: "git+https://github.com/stakater/Forecastle@deployments/kubernetes/chart?ref=8f36b82beaf2a1a42b364a3857bc83638c51e30b"
